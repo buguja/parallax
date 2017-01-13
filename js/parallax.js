@@ -1,11 +1,11 @@
 $(function(){
-    var i= 0,
-        item= null,
+    var item= null,
+        speed= 0.8;
         doc= $(document),
         parallax= $('.parallax');
 
-    for(i=0; i<parallax.length; i++) {
-        item= $(parallax[i]);
+    for(var i=0; i<parallax.length; i++) {
+        item= parallax.eq(i);
         item.css(
             'background-image',
             'url("' + item.attr('data-img') + '")'
@@ -13,9 +13,12 @@ $(function(){
     }
     
     doc.on('scroll', function(e) {
-        parallax.css(
-            'background-position',
-            '0 ' + -doc.scrollTop()/5 + 'px'
-        );
+        for(var i=0; i<parallax.length; i++) {
+            item= parallax.eq(i);
+            item.css(
+                'background-position',
+                '0 ' + -((doc.scrollTop() - item.offset().top) * speed) + 'px'
+            );
+        }
     });
 });

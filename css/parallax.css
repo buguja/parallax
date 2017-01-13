@@ -1,6 +1,7 @@
 .parallax {
     background: none;
     min-height: 600px;
+    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     -webkit-transition: all 0.2s ease;
